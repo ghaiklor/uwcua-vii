@@ -26,6 +26,7 @@
     "mocha": "^2.2.1"
   },
   "dependencies": {
-    "commander": "^2.7.1"
+    "commander": "^2.7.1",
+    "node-gitter": "^1.2.8"
   }
 }
