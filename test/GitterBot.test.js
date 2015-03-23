@@ -4,7 +4,8 @@ var GitterBot = require('../lib/GitterBot');
 var DEFAULT_CONFIG = {
   apiKey: 'API_KEY',
   roomName: 'ghaiklor/uwcua-vii',
-  execPattern: /^calc\s+/
+  execPattern: /^exec\s+/,
+  calcPattern: /^calc\s+/
 };
 
 describe('GitterBot', function () {
@@ -47,6 +48,17 @@ describe('GitterBot', function () {
 
     bot.setExecPattern(/test/);
     assert.equal(bot.getExecPattern(), '/test/');
+  });
+
+  it('Should properly get/set calc pattern', function () {
+    var bot = new GitterBot(DEFAULT_CONFIG);
+    assert.equal(bot.getCalcPattern(), DEFAULT_CONFIG.calcPattern);
+
+    bot.setCalcPattern('^my pattern');
+    assert.equal(bot.getCalcPattern(), '/^my pattern/');
+
+    bot.setCalcPattern(/test/);
+    assert.equal(bot.getCalcPattern(), '/test/');
   });
 
   it('Should properly start bot', function () {
