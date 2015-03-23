@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var program = require('commander');
 var pkg = require('../package.json');
 var GitterBot = require('../lib/GitterBot');
