@@ -1,2 +1,1 @@
-// TODO: make as API
-module.exports = {};
+module.exports = require('./lib/GitterBot');
