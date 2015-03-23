@@ -1,4 +1,4 @@
-# uwcua-vii
+# UA Web Challenge VII
 
 ![Build Status](https://img.shields.io/travis/ghaiklor/uwcua-vii/master.svg) ![Coverage Status](https://img.shields.io/coveralls/ghaiklor/uwcua-vii/master.svg) ![dependencies](https://img.shields.io/david/ghaiklor/uwcua-vii.svg) ![dev dependencies](https://img.shields.io/david/dev/ghaiklor/uwcua-vii.svg) [![Join the chat at https://gitter.im/ghaiklor/uwcua-vii](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ghaiklor/uwcua-vii?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
