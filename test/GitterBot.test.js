@@ -37,6 +37,9 @@ describe('GitterBot', function () {
 
     bot.setExecPattern('^my pattern');
     assert.equal(bot.getExecPattern(), '/^my pattern/');
+
+    bot.setExecPattern(/test/);
+    assert.equal(bot.getExecPattern(), '/test/');
   });
 
   it('Should properly start bot', function () {
