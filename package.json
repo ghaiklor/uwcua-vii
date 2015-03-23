@@ -1,0 +1,27 @@
+{
+  "name": "uwcua-vii",
+  "version": "1.0.0",
+  "description": "Solution for UA Web Challenge VIІ",
+  "main": "index.js",
+  "scripts": {
+    "test": "istanbul cover _mocha ./tests/**/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ghaiklor/uwcua-vii.git"
+  },
+  "author": {
+    "name": "Eugene Obrezkov",
+    "email": "ghaiklor@gmail.com",
+    "url": "https://www.facebook.com/ghaiklor"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ghaiklor/uwcua-vii/issues"
+  },
+  "homepage": "https://github.com/ghaiklor/uwcua-vii",
+  "devDependencies": {
+    "istanbul": "^0.3.8",
+    "mocha": "^2.2.1"
+  }
+}
