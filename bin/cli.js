@@ -4,9 +4,6 @@ var pkg = require('../package.json');
 program
   .version(pkg.version)
   .description('Gitter bot for evaluating expressions')
-  .usage('<room-name>')
+  .usage('[options] <room-name>')
+  .option('-k, --key', 'Override API key by default')
   .parse(process.argv);
-
-if (!program.args[0]) {
-  throw new Error('You must supply room');
-}
