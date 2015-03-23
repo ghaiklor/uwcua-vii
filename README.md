@@ -14,8 +14,8 @@ You can quickly see the results just navigating to [Gitter chat room](https://gi
 
 I have deployed server to DigitalOcean, so it should be work.
 
-Type `calc <expression>` and send this message.
-You will get respond with result of this expression.
+Type `exec <expression>` and send this message.
+You will get respond with result of this `expression`.
 
 ## Installation
 
