@@ -2,6 +2,7 @@
   "name": "uwcua-vii",
   "version": "1.0.0",
   "description": "Solution for UA Web Challenge VIІ",
+  "bin": "./bin/cli.js",
   "main": "index.js",
   "scripts": {
     "test": "istanbul cover _mocha ./tests/**/*.test.js"
@@ -23,5 +24,8 @@
   "devDependencies": {
     "istanbul": "^0.3.8",
     "mocha": "^2.2.1"
+  },
+  "dependencies": {
+    "commander": "^2.7.1"
   }
 }
