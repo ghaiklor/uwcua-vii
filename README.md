@@ -105,16 +105,3 @@ Or just prepend your command.
 ```shell
 GITTER_API_KEY=<YOUR_API_KEY> GITTER_ROOM_NAME=<ROOM_NAME> GITTER_BOT_EXEC_PATTERN=<REGEXP> gitter-bot
 ```
-
-### Local configuration
-
-And the last one way - it's using `config/local.js` file.
-Create `config/local.js` file and exports configuration.
-
-```javascript
-module.exports = {
-  apiKey: 'YOUR_API_KEY', // Your API key
-  roomName: 'ghaiklor/uwcua-vii', // Which room I should connect
-  execPattern: /^calc\s+/ // Which messages I need to execute
-};
-```
