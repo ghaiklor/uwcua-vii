@@ -99,6 +99,10 @@ describe('GitterBot', function () {
     assert(bot._onRoomMessage(room, {text: '1 + 2'}) instanceof GitterBot);
     assert(!sendStub.called);
     assert(bot._onRoomMessage(room, {text: 'calc 1 + 2'}) instanceof GitterBot);
-    assert(sendStub.called);
+    assert.equal(sendStub.callCount, 1);
+    assert(bot._onRoomMessage(room, {text: 'exec 1 + 2'}) instanceof GitterBot);
+    assert.equal(sendStub.callCount, 2);
+    assert(bot._onRoomMessage(room, {text: 'Ping Bot'}) instanceof GitterBot);
+    assert.equal(sendStub.callCount, 3);
   });
 });
