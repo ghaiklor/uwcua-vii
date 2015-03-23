@@ -1,4 +1,5 @@
 var assert = require('assert');
+var sinon = require('sinon');
 var GitterBot = require('../lib/GitterBot');
 var DEFAULT_CONFIG = {
   apiKey: 'API_KEY',
@@ -55,5 +56,37 @@ describe('GitterBot', function () {
   it('Should properly destroy bot', function () {
     var bot = new GitterBot();
     assert(bot.destroy() instanceof GitterBot);
+  });
+
+  it('Should properly handle when API key not exists', function () {
+    assert.throws(function () {
+      new GitterBot({apiKey: undefined});
+    }, Error);
+  });
+
+  it('Should properly call _onJoinRoom', function () {
+    var bot = new GitterBot(DEFAULT_CONFIG);
+    var listenStub = sinon.stub();
+    var onStub = sinon.stub();
+    var room = {
+      listen: listenStub.returns({on: onStub})
+    };
+
+    assert(bot._onJoinRoom(room) instanceof GitterBot);
+    assert(listenStub.called);
+    assert(onStub.called);
+  });
+
+  it('Should properly call _onRoomMessage', function () {
+    var bot = new GitterBot(DEFAULT_CONFIG);
+    var sendStub = sinon.stub();
+    var room = {
+      send: sendStub
+    };
+
+    assert(bot._onRoomMessage(room, {text: 'test'}) instanceof GitterBot);
+    assert(!sendStub.called);
+    assert(bot._onRoomMessage(room, {text: 'calc test'}) instanceof GitterBot);
+    assert(sendStub.called);
   });
 });
