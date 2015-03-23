@@ -28,6 +28,50 @@ $ npm install ghaiklor/uwcua-vii # Local module
 
 I don't publish this to npm because... anyway, I hope you understand why :smiley:
 
+## CLI Usage
+
+If you have installed as global module:
+
+```shell
+gitter-bot --key <YOUR_API_KEY> --room <ROOM_NAME> --pattern <REGEXP>
+```
+
+Or if don't:
+
+```shell
+node ./node_modules/.bin/gitter-bot --key <YOUR_API_KEY> --room <ROOM_NAME> --pattern <REGEXP>
+```
+
+You can call `gitter-bot --help` for advanced info.
+
+For example, you want to start bot with my room and custom pattern for respond.
+Then you should execute:
+
+```shell
+gitter-bot --key <YOUR_API_KEY> --room ghaiklor/uwcua-vii --pattern "^my custom pattern"
+```
+
+By the way, `--room` and `--pattern` is custom fields.
+You can also provide only your API key at all.
+
+```shell
+gitter-bot --key <YOUR_API_KEY>
+```
+
+## API
+
+You can require this module and use it for your own gitter bot.
+
+```javascript
+var GitterBot = require('gitter-bot');
+
+var myBot = new GitterBot({
+  apiKey: 'YOUR_API_KEY', // Your API key
+  roomName: 'ghaiklor/uwcua-vii', // Which room I should connect
+  execPattern: /^calc\s+/ // Which messages I need to execute
+});
+```
+
 ## Configuration
 
 I have implemented few ways to configure your gitter-bot.
@@ -73,41 +117,4 @@ module.exports = {
   roomName: 'ghaiklor/uwcua-vii', // Which room I should connect
   execPattern: /^calc\s+/ // Which messages I need to execute
 };
-```
-
-## CLI Usage
-
-If you have installed as global module:
-
-```shell
-gitter-bot --key <YOUR_API_KEY> --room <ROOM_NAME> --pattern <REGEXP>
-```
-
-Or if don't:
-
-```shell
-node ./node_modules/.bin/gitter-bot --key <YOUR_API_KEY> --room <ROOM_NAME> --pattern <REGEXP>
-```
-
-You can call `gitter-bot --help` for advanced info.
-
-For example, you want to start bot with my room and custom pattern for respond.
-Then you should execute:
-
-```shell
-gitter-bot --key <YOUR_API_KEY> --room ghaiklor/uwcua-vii --pattern "^my custom pattern"
-```
-
-## API
-
-You can require this module and use it for your own gitter bot.
-
-```javascript
-var GitterBot = require('gitter-bot');
-
-var myBot = new GitterBot({
-  apiKey: 'YOUR_API_KEY', // Your API key
-  roomName: 'ghaiklor/uwcua-vii', // Which room I should connect
-  execPattern: /^calc\s+/ // Which messages I need to execute
-});
 ```
