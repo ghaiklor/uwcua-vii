@@ -14,7 +14,7 @@ describe('GitterBot', function () {
   it('Should properly create GitterBot with API Key', function () {
     var bot = new GitterBot(API_KEY);
 
-    assert.equal(bot.getApiKey(), API_KEY);
+    assert.equal(bot.getKey(), API_KEY);
   });
 
   it('Should properly start gitter bot for listening', function () {
