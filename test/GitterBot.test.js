@@ -13,7 +13,7 @@ describe('GitterBot', function () {
   });
 
   it('Should properly create instance of GitterBot', function () {
-    assert(new GitterBot() instanceof GitterBot);
+    assert(new GitterBot(DEFAULT_CONFIG) instanceof GitterBot);
   });
 
   it('Should properly get/set API key', function () {
@@ -44,17 +44,17 @@ describe('GitterBot', function () {
   });
 
   it('Should properly start bot', function () {
-    var bot = new GitterBot();
+    var bot = new GitterBot(DEFAULT_CONFIG);
     assert(bot.start() instanceof GitterBot);
   });
 
   it('Should properly stop bot', function () {
-    var bot = new GitterBot();
+    var bot = new GitterBot(DEFAULT_CONFIG);
     assert(bot.stop() instanceof GitterBot);
   });
 
   it('Should properly destroy bot', function () {
-    var bot = new GitterBot();
+    var bot = new GitterBot(DEFAULT_CONFIG);
     assert(bot.destroy() instanceof GitterBot);
   });
 
@@ -78,9 +78,9 @@ describe('GitterBot', function () {
       send: sendStub
     };
 
-    assert(bot._onRoomMessage(room, {text: 'test'}) instanceof GitterBot);
+    assert(bot._onRoomMessage(room, {text: '1 + 2'}) instanceof GitterBot);
     assert(!sendStub.called);
-    assert(bot._onRoomMessage(room, {text: 'calc test'}) instanceof GitterBot);
+    assert(bot._onRoomMessage(room, {text: 'calc 1 + 2'}) instanceof GitterBot);
     assert(sendStub.called);
   });
 });
