@@ -10,8 +10,15 @@ program
   .usage('[options]')
   .option('-k, --key <key>', 'Set API key')
   .option('-r, --room <room>', 'Set room')
-  .option('-p, --pattern <pattern>', 'Set execution pattern')
+  .option('-e, --exec-pattern <exec-pattern>', 'Set execution pattern')
+  .option('-c, --calc-pattern <calc-pattern>', 'Set calculation pattern')
   .parse(process.argv);
 
-var bot = new GitterBot({apiKey: program.key, roomName: program.room, execPattern: program.pattern});
+var bot = new GitterBot({
+  apiKey: program.key,
+  roomName: program.room,
+  execPattern: program.execPattern,
+  calcPattern: program.calcPattern
+});
+
 process.on('exit', bot.destroy.bind(bot));
