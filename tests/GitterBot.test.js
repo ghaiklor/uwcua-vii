@@ -1,6 +1,8 @@
 var assert = require('assert');
 var GitterBot = require('../lib/GitterBot');
 var API_KEY = 'API_KEY';
+var ROOM_NAME = 'ghaiklor/uwcua-vii';
+var EXEC_PATTERN = /^calc\s*/;
 
 describe('GitterBot', function () {
   it('Should properly exports', function () {
@@ -11,30 +13,27 @@ describe('GitterBot', function () {
     assert(new GitterBot() instanceof GitterBot);
   });
 
-  it('Should properly create GitterBot with API Key', function () {
-    var bot = new GitterBot(API_KEY);
-
+  it('Should properly get/set API key', function () {
+    var bot = new GitterBot({apiKey: API_KEY});
     assert.equal(bot.getApiKey(), API_KEY);
+
+    bot.setApiKey('new-api-key');
+    assert.equal(bot.getApiKey(), 'new-api-key');
   });
 
-  it('Should properly start gitter bot for listening', function () {
-    var bot = new GitterBot(API_KEY);
+  it('Should properly get/set room name', function () {
+    var bot = new GitterBot({roomName: ROOM_NAME});
+    assert.equal(bot.getRoomName(), ROOM_NAME);
 
-    assert(!bot._isStarted);
-    assert(bot.start() instanceof GitterBot);
-    assert(bot._isStarted);
+    bot.setRoomName('new-room');
+    assert.equal(bot.getRoomName(), 'new-room');
   });
 
-  it('Should properly stop gitter bot for listening', function () {
-    var bot = new GitterBot(API_KEY);
+  it('Should properly get/set exec pattern', function () {
+    var bot = new GitterBot({execPattern: EXEC_PATTERN});
+    assert.equal(bot.getExecPattern(), EXEC_PATTERN);
 
-    assert(bot._isStarted);
-    assert(bot.stop() instanceof GitterBot);
-    assert(!bot._isStarted);
-  });
-
-  it('Should properly reconnect', function () {
-    var bot = new GitterBot(API_KEY);
-    assert(bot.reconnect() instanceof GitterBot);
+    bot.setExecPattern('^my pattern');
+    assert.equal(bot.getExecPattern(), '^my pattern');
   });
 });
