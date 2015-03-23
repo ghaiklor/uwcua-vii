@@ -24,6 +24,12 @@ describe('GitterBot', function () {
     assert.equal(bot.getApiKey(), 'new-api-key');
   });
 
+  it('Should properly throw exception when API key is not exists', function () {
+    assert.throws(function () {
+      new GitterBot();
+    }, Error);
+  });
+
   it('Should properly get/set room name', function () {
     var bot = new GitterBot(DEFAULT_CONFIG);
     assert.equal(bot.getRoomName(), DEFAULT_CONFIG.roomName);
