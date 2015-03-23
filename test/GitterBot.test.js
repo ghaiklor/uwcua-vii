@@ -58,12 +58,6 @@ describe('GitterBot', function () {
     assert(bot.destroy() instanceof GitterBot);
   });
 
-  it('Should properly handle when API key not exists', function () {
-    assert.throws(function () {
-      new GitterBot({apiKey: undefined});
-    }, Error);
-  });
-
   it('Should properly call _onJoinRoom', function () {
     var bot = new GitterBot(DEFAULT_CONFIG);
     var listenStub = sinon.stub();
