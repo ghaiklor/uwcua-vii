@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Solution for UA Web Challenge VIІ",
   "bin": {
-    "gitter-bot": "./bin/cli.js"
+    "gitter-bot": "./bin/gitter-bot.js"
   },
   "main": "index.js",
   "scripts": {
