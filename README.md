@@ -14,8 +14,11 @@ You can quickly see the results just navigating to [Gitter chat room](https://gi
 
 I have deployed server to DigitalOcean, so it should be work.
 
-Type `exec <expression>` and send this message.
-You will get respond with result of this `expression`.
+Type `exec <expression>` and you'll get result of executing.
+
+Type `calc <expression>` and you'll get result of calculation with `=` sign.
+
+Type `Ping` if you want to check, if bot is alive.
 
 ## Installation
 
@@ -33,25 +36,25 @@ I don't publish this to npm because... anyway, I hope you understand why :smiley
 If you have installed as global module:
 
 ```shell
-gitter-bot --key <YOUR_API_KEY> --room <ROOM_NAME> --pattern <REGEXP>
+gitter-bot --key <YOUR_API_KEY> --room <ROOM_NAME> --exec-pattern <REGEXP> --calc-pattern <REGEXP> --ping-pattern <REGEXP>
 ```
 
 Or if don't:
 
 ```shell
-node ./node_modules/.bin/gitter-bot --key <YOUR_API_KEY> --room <ROOM_NAME> --pattern <REGEXP>
+node ./node_modules/.bin/gitter-bot --key <YOUR_API_KEY> --room <ROOM_NAME> --exec-pattern <REGEXP> --calc-pattern <REGEXP> --ping-pattern <REGEXP>
 ```
 
 You can call `gitter-bot --help` for advanced info.
 
-For example, you want to start bot with my room and custom pattern for respond.
+For example, you want to start bot with my room and custom execution pattern for respond.
 Then you should execute:
 
 ```shell
-gitter-bot --key <YOUR_API_KEY> --room ghaiklor/uwcua-vii --pattern "^my custom pattern"
+gitter-bot --key <YOUR_API_KEY> --room ghaiklor/uwcua-vii --exec-pattern "^my custom pattern"
 ```
 
-By the way, `--room` and `--pattern` is custom fields.
+By the way, `--room`, `--exec-pattern`, `--calc-pattern` and `--ping-pattern` is custom fields.
 You can also provide only your API key at all.
 
 ```shell
@@ -68,7 +71,9 @@ var GitterBot = require('gitter-bot');
 var myBot = new GitterBot({
   apiKey: 'YOUR_API_KEY', // Your API key
   roomName: 'ghaiklor/uwcua-vii', // Which room I should connect
-  execPattern: /^calc\s+/ // Which messages I need to execute
+  execPattern: /^exec\s+/, // Which messages I need to execute
+  calcPattern: /^calc\s+/, // Which messages I need to calculate
+  pingPattern: /^Ping\s+/ // On which messages I should respond with pong
 });
 ```
 
@@ -84,7 +89,9 @@ Configuration options which you send directly to `new GitterBot()` have highest 
 var myBot = new GitterBot({
   apiKey: 'YOUR_API_KEY', // Your API key
   roomName: 'ghaiklor/uwcua-vii', // Which room I should connect
-  execPattern: /^calc\s+/ // Which messages I need to execute
+  execPattern: /^exec\s+/, // Which messages I need to execute
+  calcPattern: /^calc\s+/, // Which messages I need to calculate
+  pingPattern: /^Ping\s+/ // On which messages I should respond with pong
 });
 ```
 
@@ -97,11 +104,7 @@ If you didn't override those with Direct Configuration - it will works.
 $ export GITTER_API_KEY=<YOUR_API_KEY>
 $ export GITTER_ROOM_NAME=<ROOM_NAME>
 $ export GITTER_BOT_EXEC_PATTERN=<REGEXP>
+$ export GITTER_BOT_CALC_PATTERN=<REGEXP>
+$ export GITTER_BOT_PING_PATTERN=<REGEXP>
 $ gitter-bot
-```
-
-Or just prepend your command.
-
-```shell
-GITTER_API_KEY=<YOUR_API_KEY> GITTER_ROOM_NAME=<ROOM_NAME> GITTER_BOT_EXEC_PATTERN=<REGEXP> gitter-bot
 ```
