@@ -5,7 +5,8 @@ var DEFAULT_CONFIG = {
   apiKey: 'API_KEY',
   roomName: 'ghaiklor/uwcua-vii',
   execPattern: /^exec\s+/,
-  calcPattern: /^calc\s+/
+  calcPattern: /^calc\s+/,
+  pingPattern: /^Ping\s+/
 };
 
 describe('GitterBot', function () {
@@ -17,48 +18,25 @@ describe('GitterBot', function () {
     assert(new GitterBot(DEFAULT_CONFIG) instanceof GitterBot);
   });
 
-  it('Should properly get/set API key', function () {
+  it('Should properly get/set config', function () {
     var bot = new GitterBot(DEFAULT_CONFIG);
-    assert.equal(bot.getApiKey(), DEFAULT_CONFIG.apiKey);
+    assert.deepEqual(bot.getConfig(), DEFAULT_CONFIG);
+    assert.equal(bot.getConfig('apiKey'), DEFAULT_CONFIG.apiKey);
 
-    bot.setApiKey('new-api-key');
-    assert.equal(bot.getApiKey(), 'new-api-key');
+    bot.setConfig({apiKey: 'new-api-key'});
+    assert.deepEqual(bot.getConfig(), {
+      apiKey: 'new-api-key',
+      roomName: 'ghaiklor/uwcua-vii',
+      execPattern: /^exec\s+/,
+      calcPattern: /^calc\s+/,
+      pingPattern: /^Ping\s+/
+    });
   });
 
   it('Should properly throw exception when API key is not exists', function () {
     assert.throws(function () {
       new GitterBot();
     }, Error);
-  });
-
-  it('Should properly get/set room name', function () {
-    var bot = new GitterBot(DEFAULT_CONFIG);
-    assert.equal(bot.getRoomName(), DEFAULT_CONFIG.roomName);
-
-    bot.setRoomName('new-room');
-    assert.equal(bot.getRoomName(), 'new-room');
-  });
-
-  it('Should properly get/set exec pattern', function () {
-    var bot = new GitterBot(DEFAULT_CONFIG);
-    assert.equal(bot.getExecPattern(), DEFAULT_CONFIG.execPattern);
-
-    bot.setExecPattern('^my pattern');
-    assert.equal(bot.getExecPattern(), '/^my pattern/');
-
-    bot.setExecPattern(/test/);
-    assert.equal(bot.getExecPattern(), '/test/');
-  });
-
-  it('Should properly get/set calc pattern', function () {
-    var bot = new GitterBot(DEFAULT_CONFIG);
-    assert.equal(bot.getCalcPattern(), DEFAULT_CONFIG.calcPattern);
-
-    bot.setCalcPattern('^my pattern');
-    assert.equal(bot.getCalcPattern(), '/^my pattern/');
-
-    bot.setCalcPattern(/test/);
-    assert.equal(bot.getCalcPattern(), '/test/');
   });
 
   it('Should properly start bot', function () {
@@ -102,7 +80,7 @@ describe('GitterBot', function () {
     assert.equal(sendStub.callCount, 1);
     assert(bot._onRoomMessage(room, {text: 'exec 1 + 2'}) instanceof GitterBot);
     assert.equal(sendStub.callCount, 2);
-    assert(bot._onRoomMessage(room, {text: 'Ping Bot!'}) instanceof GitterBot);
+    assert(bot._onRoomMessage(room, {text: 'Ping'}) instanceof GitterBot);
     assert.equal(sendStub.callCount, 3);
   });
 });
