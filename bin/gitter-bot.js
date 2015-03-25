@@ -12,13 +12,15 @@ program
   .option('-r, --room <room>', 'Set room')
   .option('-e, --exec-pattern <exec-pattern>', 'Set execution pattern')
   .option('-c, --calc-pattern <calc-pattern>', 'Set calculation pattern')
+  .option('-p, --ping-pattern <ping-pattern>', 'Set ping pattern')
   .parse(process.argv);
 
 var bot = new GitterBot({
-  apiKey: program.key,
-  roomName: program.room,
-  execPattern: program.execPattern,
-  calcPattern: program.calcPattern
+  apiKey: program.key || process.env['GITTER_API_KEY'],
+  roomName: program.room || process.env['GITTER_ROOM_NAME'] || 'ghaiklor/uwcua-vii',
+  execPattern: program.execPattern || process.env['GITTER_BOT_EXEC_PATTERN'] || /^exec\s+/,
+  calcPattern: program.calcPattern || process.env['GITTER_BOT_CALC_PATTERN'] || /^calc\s+/,
+  pingPattern: program.pingPattern || process.env['GITTER_BOT_PING_PATTERN'] || /^Ping\s+/
 });
 
 process.on('exit', bot.destroy.bind(bot));
