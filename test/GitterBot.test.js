@@ -6,7 +6,7 @@ var DEFAULT_CONFIG = {
   roomName: 'ghaiklor/uwcua-vii',
   execPattern: /^exec\s+/,
   calcPattern: /^calc\s+/,
-  pingPattern: /^Ping\s+/
+  pingPattern: /^Ping$/
 };
 
 describe('GitterBot', function () {
@@ -29,7 +29,7 @@ describe('GitterBot', function () {
       roomName: 'ghaiklor/uwcua-vii',
       execPattern: /^exec\s+/,
       calcPattern: /^calc\s+/,
-      pingPattern: /^Ping\s+/
+      pingPattern: /^Ping$/
     });
   });
 

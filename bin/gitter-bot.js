@@ -20,7 +20,7 @@ var bot = new GitterBot({
   roomName: program.room || process.env['GITTER_ROOM_NAME'] || 'ghaiklor/uwcua-vii',
   execPattern: program.execPattern || process.env['GITTER_BOT_EXEC_PATTERN'] || /^exec\s+/,
   calcPattern: program.calcPattern || process.env['GITTER_BOT_CALC_PATTERN'] || /^calc\s+/,
-  pingPattern: program.pingPattern || process.env['GITTER_BOT_PING_PATTERN'] || /^Ping\s+/
+  pingPattern: program.pingPattern || process.env['GITTER_BOT_PING_PATTERN'] || /^Ping$/
 });
 
 process.on('exit', bot.destroy.bind(bot));
