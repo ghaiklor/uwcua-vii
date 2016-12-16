@@ -24,12 +24,12 @@
   },
   "homepage": "https://github.com/ghaiklor/uwcua-vii",
   "devDependencies": {
-    "istanbul": "^0.3.8",
-    "mocha": "^2.2.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
     "sinon": "^1.14.1"
   },
   "dependencies": {
     "commander": "^2.7.1",
-    "node-gitter": "^1.2.8"
+    "node-gitter": "^2.0.5"
   }
 }
