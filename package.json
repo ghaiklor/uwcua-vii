@@ -25,7 +25,7 @@
   "homepage": "https://github.com/ghaiklor/uwcua-vii",
   "devDependencies": {
     "istanbul": "^0.4.5",
-    "mocha": "^3.2.0",
+    "mocha": "^4.0.0",
     "sinon": "^3.0.0"
   },
   "dependencies": {
