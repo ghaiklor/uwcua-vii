@@ -29,7 +29,7 @@
     "sinon": "^7.2.3"
   },
   "dependencies": {
-    "commander": "^3.0.0",
+    "commander": "^4.0.0",
     "node-gitter": "^2.0.5"
   }
 }
